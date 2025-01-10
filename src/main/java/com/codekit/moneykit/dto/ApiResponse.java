@@ -1,14 +1,18 @@
 package com.codekit.moneykit.dto;
 
-public class ApiResponse {
+public class ApiResponse<T> {
 
     private boolean success;
-    private Object data;
+    private String message;
+    private T data;
 
-    public ApiResponse(boolean success, Object data) {
+    public ApiResponse(boolean success, String message, T data) {
         this.success = success;
+        this.message = message;
         this.data = data;
     }
+
+    // Getter Setter
 
     public boolean isSuccess() {
         return success;
@@ -18,12 +22,19 @@ public class ApiResponse {
         this.success = success;
     }
 
-    public Object getData() {
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
-
 }
