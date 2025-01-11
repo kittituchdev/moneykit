@@ -1,18 +1,17 @@
 package com.codekit.moneykit.dto;
 
-public class RegisterDTO {
+public class SignInDTO {
     private String email;
     private String password;
 
-    public RegisterDTO() {
+    public SignInDTO() {
     }
 
-    public RegisterDTO(String email, String password) {
+    public SignInDTO(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    // Getters and Setters
     public String getEmail() {
         return email;
     }
