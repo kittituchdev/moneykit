@@ -11,7 +11,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
-    private Long transactionId;
+    private int transactionId;
 
     @Column(nullable = false)
     private double amount;
@@ -31,11 +31,11 @@ public class Transaction {
     private Category categoryId;
 
     // Getters and Setters
-    public Long getTransactionId() {
+    public int getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
     }
 

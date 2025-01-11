@@ -11,7 +11,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Long categoryId;
+    private int categoryId;
 
     @Column(nullable = false)
     private String name; // Example income = salary, gift, freelance or expense food, grocery
@@ -23,11 +23,11 @@ public class Category {
     private List<Transaction> transactions;
 
     // Getters and Setters
-    public Long getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Long categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
