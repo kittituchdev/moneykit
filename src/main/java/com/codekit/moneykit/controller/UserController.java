@@ -38,16 +38,9 @@ public class UserController {
 
     // SignIn
     @PostMapping("/sign-in")
-    public ResponseEntity<ApiResponse<SignInResponse>> signIn(@RequestBody SignInDTO dataSignIn) {
-        if (dataSignIn.getEmail() == null || dataSignIn.getEmail().trim().isEmpty() ||
-                dataSignIn.getPassword() == null || dataSignIn.getPassword().trim().isEmpty()) {
-            throw new IllegalArgumentException("Invalid email or password");
-        }
-
-        String token = "accessToken";
-        SignInResponse response = new SignInResponse();
-        response.setAccessToken(token);
-        return ResponseEntity.ok(new ApiResponse<>(true, "Sign in success", response));
+    public ResponseEntity<ApiResponse<SignInResponse>> signIn(@RequestBody SignInDTO signInDTO) {
+        SignInResponse signInResponse = userService.signIn(signInDTO);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Sign in success", signInResponse));
     }
     // SignOut
 
