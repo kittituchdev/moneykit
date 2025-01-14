@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -58,6 +59,11 @@ public class UserService {
 
     private String generateAccessToken(User user) {
         return "accessToken";
+    }
+
+    public List<String> getAllUsers() {
+        List<User> users = this.userRepository.findAll();
+        return users.stream().map(User::getEmail).toList();
     }
 
 }

@@ -12,20 +12,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public ResponseEntity<ApiResponse<String[]>> getUsers() {
-        String[] userData = {"Moneykit User", "Other User"};
+    @GetMapping("all")
+    public ResponseEntity<ApiResponse<List<String>>> getUsers() {
+        List<String> userData = userService.getAllUsers();
         return ResponseEntity.ok(new ApiResponse<>(true, "Get users success", userData));
     }
 

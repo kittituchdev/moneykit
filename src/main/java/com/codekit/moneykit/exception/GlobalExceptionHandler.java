@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.NoSuchElementException;
 
@@ -54,6 +55,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ApiResponse<?>> handleNoSuchElementException(NoSuchElementException ex) {
+        ApiResponse<?> response = new ApiResponse<>(false, "Data not found: " + ex.getMessage(), null);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleNoResourceFoundException(NoResourceFoundException ex) {
         ApiResponse<?> response = new ApiResponse<>(false, "Resource not found: " + ex.getMessage(), null);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
